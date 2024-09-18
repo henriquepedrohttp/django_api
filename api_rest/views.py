@@ -22,3 +22,13 @@ def get_users(request):
     return Response(serializer.data)
   
   return Response(status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_user(request,nick):
+  try:
+    user = User.objects.get(pk=nick)
+    serializer = UserSerializer(user)
+  except:
+    return Response(status=status.HTTP_404_NOT_FOUND)
+  return Response(serializer.data)
+  
