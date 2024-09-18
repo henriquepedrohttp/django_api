@@ -24,7 +24,7 @@ def get_users(request):
   return Response(status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
-def get_user(request,nick):
+def get_user_by_id(request,nick):
   try:
     user = User.objects.get(pk=nick)
     serializer = UserSerializer(user)
